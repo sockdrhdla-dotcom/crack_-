@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여섯 갈래의 황금빛 연선</title>
+    
+    <!-- Tailwind CSS (스타일링) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons (아이콘) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts (나눔명조) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Nanum Myeongjo', serif;
+            background-color: #FFFDF5;
+            color: #1f2937;
+        }
+        
+        ::selection {
+            background-color: #fef08a; /* yellow-200 */
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #B8860B, #FFD700, #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8860B;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 헤더 섹션 -->
+    <header class="relative py-24 px-4 text-center overflow-hidden flex flex-col items-center border-b border-yellow-200/50 shadow-sm">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-multiply"></div>
+        <div class="absolute top-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50"></div>
+        
+        <i data-lucide="sparkles" class="w-12 h-12 text-[#D4AF37] mb-6 opacity-80" stroke-width="1"></i>
+        <h2 class="text-xl md:text-2xl text-[#8B6508] tracking-[0.2em] mb-4 italic">당신의 운명을 엮어낼</h2>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gray-900 tracking-wider">
+            여섯 갈래의 <span class="gold-gradient-text">황금빛</span> 연선
+        </h1>
+        <p class="max-w-2xl text-gray-600 leading-relaxed text-lg mx-auto">
+            제국의 밤을 수놓는 권력과 마법, 그리고 신성.<br/>
+            누구의 손을 잡으시겠습니까?
+        </p>
+        
+        <div class="mt-12 flex items-center justify-center gap-4 text-[#D4AF37]">
+            <span class="w-16 h-px bg-[#D4AF37] opacity-50"></span>
+            <i data-lucide="gem" class="w-5 h-5" stroke-width="1.5"></i>
+            <span class="w-16 h-px bg-[#D4AF37] opacity-50"></span>
+        </div>
+    </header>
+
+    <!-- 캐릭터 목록 섹션 -->
+    <main class="max-w-7xl mx-auto px-4 py-20">
+        <div id="character-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- 자바스크립트를 통해 여기에 캐릭터 카드가 생성됩니다. -->
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="text-center py-16 border-t border-yellow-200/50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-multiply"></div>
+        <i data-lucide="crown" class="w-8 h-8 text-[#D4AF37] mx-auto mb-4 opacity-50"></i>
+        <p class="text-[#8B6508] tracking-widest text-sm mb-2">당신의 선택이 제국의 역사가 됩니다</p>
+    </footer>
+
+    <!-- 자바스크립트 로직 -->
+    <script>
+        const characters = [
+            {
+                id: "lucas",
+                name: "루카스",
+                nameEng: "LUCAS",
+                imageFile: "루카스.png",
+                age: "25세",
+                role: "신의 사자 · 책사",
+                icon: "feather",
+                color: "from-blue-50 to-[#FFFDF5]",
+                pointColor: "text-blue-700",
+                appearance: "단정한 긴 은발(낮게 묶음) · 푸른 눈 · 단안경 · 흰 제복과 케이프",
+                mbti: "INTJ (1w9 / 질서악)",
+                stats: [
+                    { label: "계획적", val: 30 }, { label: "신에 대한 충성", val: 20 }, { label: "자기확신", val: 20 }, { label: "오만함", val: 15 }, { label: "은근 감정적", val: 5 }
+                ],
+                dialogue: "상대를 무시하는 듯한 존댓말. 부끄러워 긍정적인 평가도 부정형으로 말하는 편. (예: '나쁘지 않네요.')",
+                relation: "좁고 얕은 관계. 사람과의 교류보다 계획 수립을 선호하지만, 내 사람이 되면 툴툴대며 이불을 덮어주는 츤데레.",
+                romance: "성적 경험 전무. 자극에 민감하며 스킨십에 쉽게 부끄러워함. 애정 어린 대상에겐 나긋한 목소리를 냄."
+            },
+            {
+                id: "cassian",
+                name: "카시안 드 베른하르트",
+                nameEng: "CASSIAN DE BERNHARDT",
+                imageFile: "카시안.png",
+                age: "30세",
+                role: "베른하르트의 왕",
+                icon: "crown",
+                color: "from-yellow-100 to-[#FFFDF5]",
+                pointColor: "text-amber-700",
+                appearance: "어깨선 길이의 금발 · 금안 · 서늘한 인상",
+                mbti: "ESTJ (8w7)",
+                stats: [
+                    { label: "냉혹함", val: 40 }, { label: "인간 불신", val: 30 }, { label: "계략적", val: 20 }, { label: "내사람 한정 다정", val: 10 }
+                ],
+                dialogue: "아랫사람에게 반말, 동등 이상 귀족에겐 건조한 존댓말. 간결한 명령조.",
+                relation: "좁고 깊은 관계. 타인을 이용할 장기말로 보나, 신뢰와 유용성이 충족되어 '내 사람'이 되면 다정함을 보임.",
+                romance: "도미넌트 성향(애정 기반). 상대가 쾌락에 허덕이는 모습을 즐김. 질투 시 원인 제공자를 가차 없이 변방으로 치워버림."
+            },
+            {
+                id: "cedric",
+                name: "세드릭 펠튼",
+                nameEng: "CEDRIC FELTON",
+                imageFile: "세드릭.png",
+                age: "27세",
+                role: "펠튼 공작",
+                icon: "sword",
+                color: "from-gray-100 to-[#FFFDF5]",
+                pointColor: "text-gray-800",
+                appearance: "흑발 · 금안 · 날카로운 인상 · 주로 검은 제복 착용",
+                mbti: "ISTP (8w9)",
+                stats: [
+                    { label: "냉정", val: 35 }, { label: "무심함", val: 25 }, { label: "나른함", val: 20 }, { label: "공격성", val: 15 }, { label: "책임감", val: 5 }
+                ],
+                dialogue: "기본적으로 존댓말, 아랫사람에겐 반말. 상대를 내려다보는 듯한 나른한 어투.",
+                relation: "좁고 깊은 인간관계. 북부의 환경 탓에 쉽게 마음을 주지 않지만, 깊어지면 더울 정도로 옷을 껴입히는 과보호적 면모 발현.",
+                romance: "도미넌트 성향이지만 애정 기반. 상대가 싫어하면 즉각 멈춤. 키스마크를 남기며, 질투 시 상대를 노려보며 은근히 위협함."
+            },
+            {
+                id: "eric",
+                name: "에릭 브리온",
+                nameEng: "ERIC BRION",
+                imageFile: "에릭.png",
+                age: "20세",
+                role: "브리온 백작",
+                icon: "sun",
+                color: "from-green-50 to-[#FFFDF5]",
+                pointColor: "text-green-600",
+                appearance: "화사한 금발 · 녹색 눈",
+                mbti: "ENFP (2w3)",
+                stats: [
+                    { label: "다정함", val: 40 }, { label: "낙천적", val: 30 }, { label: "밝은 에너지", val: 20 }, { label: "상인의 계산", val: 10 }
+                ],
+                dialogue: "기본 존댓말, 친한 상대에겐 반말. 밝은 목소리와 잦은 감탄사 사용.",
+                relation: "넓고 깊은 인간관계. 사람을 좋아하며, 관계가 깊어지면 찰싹 붙어 떨어지지 않으려 함.",
+                romance: "보살핌 받는 것을 좋아하며 관계 중 칭찬을 갈구함 ('저 잘했어요?'). 질투 시 상대를 끌어안으며 서운함을 표출."
+            },
+            {
+                id: "michael",
+                name: "미카엘",
+                nameEng: "MICHAEL",
+                imageFile: "미카엘.png",
+                age: "27세",
+                role: "베른하르트의 교황",
+                icon: "book",
+                color: "from-pink-50 to-[#FFFDF5]",
+                pointColor: "text-pink-700",
+                appearance: "긴 은발 · 분홍색 눈동자 · 주로 흰색 사제복 착용",
+                mbti: "ENFJ (3w4)",
+                stats: [
+                    { label: "교활함", val: 40 }, { label: "위선", val: 30 }, { label: "계산적", val: 20 }, { label: "권력욕", val: 10 }
+                ],
+                dialogue: "나긋나긋한 톤이지만 묘하게 건조한 존댓말 사용.",
+                relation: "넓고 얕은 관계. 자애로운 교황의 탈을 썼으나 타인을 진심으로 대하지 않음. 깊어지면 은근한 스킨십으로 유혹함.",
+                romance: "종교적 어휘를 사용하며 천박한 어투를 기피. 상대가 쾌락에 젖은 모습을 감상하는 것을 즐기며, 부드러운 어조로 상대를 압박함."
+            },
+            {
+                id: "ain",
+                name: "아인",
+                nameEng: "AIN",
+                imageFile: "아인.png",
+                age: "22세",
+                role: "마탑주",
+                icon: "eye",
+                color: "from-indigo-100 to-[#FFFDF5]",
+                pointColor: "text-indigo-800",
+                appearance: "긴 보라색 머리카락 · 보라색 눈 · 매혹적인 여우상",
+                mbti: "ENTP (7w8)",
+                stats: [
+                    { label: "장난기", val: 40 }, { label: "유희적", val: 30 }, { label: "오만함", val: 20 }, { label: "호기심", val: 10 }
+                ],
+                dialogue: "가벼운 말투와 기본 반말. 예의 차릴 땐 가벼운 존댓말(~해요체) 사용.",
+                relation: "좁고 얕은 관계. 관심 없는 상대는 철저히 무시하며, 호기심이 생긴 대상에게는 즉각 접근함.",
+                romance: "마력을 활용한 자극을 즐기며, 관계를 교류보단 놀이로 대함. 질투 시 웃으며 상대를 자신의 품으로 끌어당김."
+            }
+        ];
+
+        const container = document.getElementById('character-container');
+
+        // 캐릭터 카드 생성
+        characters.forEach(char => {
+            const statsHtml = char.stats.map(stat => `
+                <div class="flex items-center text-xs">
+                    <span class="w-24 text-gray-600">${stat.label}</span>
+                    <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-[#D4AF37] opacity-80" style="width: ${(stat.val / 40) * 100}%"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            const cardHtml = `
+                <div class="relative bg-white rounded-sm border border-yellow-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden transition-all duration-500 hover:shadow-[0_15px_40px_rgb(212,175,55,0.15)] hover:-translate-y-1 group flex flex-col">
+                    <!-- 배경 그라데이션 -->
+                    <div class="h-24 bg-gradient-to-b ${char.color} opacity-40 absolute top-0 left-0 right-0 z-0"></div>
+                    
+                    <!-- 장식적 모서리 -->
+                    <div class="absolute top-2 left-2 w-8 h-8 border-t border-l border-[#D4AF37]/30"></div>
+                    <div class="absolute top-2 right-2 w-8 h-8 border-t border-r border-[#D4AF37]/30"></div>
+
+                    <div class="relative z-10 p-8 flex-1 flex flex-col">
+                        <!-- 타이틀 및 아이콘 -->
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-3xl font-bold text-gray-900 mb-1">${char.name}</h3>
+                                <p class="text-xs tracking-widest text-gray-400 font-sans uppercase">${char.nameEng}</p>
+                            </div>
+                            <div class="p-3 rounded-full bg-white shadow-sm border border-yellow-50 ${char.pointColor}">
+                                <i data-lucide="${char.icon}" class="w-6 h-6" stroke-width="1.5"></i>
+                            </div>
+                        </div>
+
+                        <!-- 3:2 비율 이미지 영역 -->
+                        <!-- 이미지가 로드 실패 시(onerror), img 태그를 숨겨서 뒤에 있는 안내 박스가 보이도록 처리 -->
+                        <div class="w-full aspect-[3/2] rounded-sm mb-6 relative overflow-hidden bg-[#FAF8F0] border border-dashed border-yellow-200 flex items-center justify-center group-hover:border-[#D4AF37]/50 transition-colors">
+                            <div class="flex flex-col items-center justify-center text-[#D4AF37]/60 z-0 text-center px-4">
+                                <i data-lucide="image" class="w-8 h-8 mb-2"></i>
+                                <span class="text-xs font-sans tracking-wide">이미지 파일명:</span>
+                                <span class="text-sm font-bold font-sans mt-1 bg-white px-2 py-1 rounded shadow-sm">${char.imageFile}</span>
+                            </div>
+                            <!-- 실제 이미지 (존재할 경우 위를 덮음) -->
+                            <img src="${char.imageFile}" alt="${char.name}" class="absolute inset-0 w-full h-full object-cover z-10" onerror="this.style.display='none'">
+                        </div>
+
+                        <!-- 뱃지 태그 -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-yellow-50/50 text-[#8B6508] border border-yellow-100/50 text-sm rounded-full">${char.role}</span>
+                            <span class="px-3 py-1 bg-gray-50 text-gray-600 border border-gray-100 text-sm rounded-full">${char.age}</span>
+                        </div>
+
+                        <!-- 외모 묘사 -->
+                        <div class="mb-6 pb-6 border-b border-gray-100 border-dashed">
+                            <p class="text-gray-600 leading-relaxed text-sm">${char.appearance}</p>
+                        </div>
+
+                        <!-- 스탯 바 -->
+                        <div class="mb-6 space-y-3 flex-1">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-sm font-bold text-gray-800">성격 지표</span>
+                                <span class="text-xs text-gray-400 font-sans">${char.mbti}</span>
+                            </div>
+                            ${statsHtml}
+                        </div>
+
+                        <!-- 상세정보 토글 버튼 -->
+                        <button onclick="toggleDetails('${char.id}')" class="w-full py-3 mt-auto text-sm text-center text-[#8B6508] border border-[#D4AF37]/30 hover:bg-[#FFFDF5] transition-colors flex items-center justify-center gap-2">
+                            <span id="btn-text-${char.id}">내밀한 이야기 펼치기</span>
+                            <i data-lucide="chevron-down" id="btn-icon-${char.id}" class="w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+
+                        <!-- 토글로 열리는 상세 내용 -->
+                        <div id="details-${char.id}" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
+                            <div class="space-y-5 text-sm text-gray-600 bg-gray-50/50 p-5 rounded-sm border border-gray-100 mt-6">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>대화의 온도
+                                    </h4>
+                                    <p class="leading-relaxed">${char.dialogue}</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>관계성
+                                    </h4>
+                                    <p class="leading-relaxed">${char.relation}</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-1 flex items-center gap-2">
+                                        <span class="w-1 h-1 bg-[#D4AF37] rounded-full"></span>은밀한 취향
+                                    </h4>
+                                    <p class="leading-relaxed">${char.romance}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', cardHtml);
+        });
+
+        // 렌더링 후 아이콘 초기화
+        lucide.createIcons();
+
+        // 디테일 토글 함수
+        window.toggleDetails = function(id) {
+            const detailsDiv = document.getElementById(`details-${id}`);
+            const btnText = document.getElementById(`btn-text-${id}`);
+            const btnIcon = document.getElementById(`btn-icon-${id}`);
+            
+            if (detailsDiv.classList.contains('max-h-0')) {
+                // 펼치기
+                detailsDiv.classList.remove('max-h-0', 'opacity-0');
+                detailsDiv.classList.add('max-h-[500px]', 'opacity-100');
+                btnText.textContent = '비밀 접어두기';
+                btnIcon.classList.add('rotate-180');
+            } else {
+                // 접기
+                detailsDiv.classList.remove('max-h-[500px]', 'opacity-100');
+                detailsDiv.classList.add('max-h-0', 'opacity-0');
+                btnText.textContent = '내밀한 이야기 펼치기';
+                btnIcon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
