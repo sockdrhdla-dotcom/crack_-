@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여섯 갈래의 황금빛 연선</title>
     
-    <!-- Tailwind CSS (스타일링) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (아이콘) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Google Fonts (나눔명조) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
@@ -51,7 +48,6 @@
 </head>
 <body class="min-h-screen">
 
-    <!-- 헤더 섹션 -->
     <header class="relative py-24 px-4 text-center overflow-hidden flex flex-col items-center border-b border-yellow-200/50 shadow-sm">
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-multiply"></div>
         <div class="absolute top-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-50"></div>
@@ -73,21 +69,17 @@
         </div>
     </header>
 
-    <!-- 캐릭터 목록 섹션 -->
     <main class="max-w-7xl mx-auto px-4 py-20">
         <div id="character-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- 자바스크립트를 통해 여기에 캐릭터 카드가 생성됩니다. -->
-        </div>
+            </div>
     </main>
 
-    <!-- 푸터 -->
     <footer class="text-center py-16 border-t border-yellow-200/50 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-multiply"></div>
         <i data-lucide="crown" class="w-8 h-8 text-[#D4AF37] mx-auto mb-4 opacity-50"></i>
         <p class="text-[#8B6508] tracking-widest text-sm mb-2">당신의 선택이 제국의 역사가 됩니다</p>
     </footer>
 
-    <!-- 자바스크립트 로직 -->
     <script>
         const characters = [
             {
@@ -221,15 +213,12 @@
 
             const cardHtml = `
                 <div class="relative bg-white rounded-sm border border-yellow-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden transition-all duration-500 hover:shadow-[0_15px_40px_rgb(212,175,55,0.15)] hover:-translate-y-1 group flex flex-col">
-                    <!-- 배경 그라데이션 -->
                     <div class="h-24 bg-gradient-to-b ${char.color} opacity-40 absolute top-0 left-0 right-0 z-0"></div>
                     
-                    <!-- 장식적 모서리 -->
                     <div class="absolute top-2 left-2 w-8 h-8 border-t border-l border-[#D4AF37]/30"></div>
                     <div class="absolute top-2 right-2 w-8 h-8 border-t border-r border-[#D4AF37]/30"></div>
 
                     <div class="relative z-10 p-8 flex-1 flex flex-col">
-                        <!-- 타이틀 및 아이콘 -->
                         <div class="flex justify-between items-start mb-6">
                             <div>
                                 <h3 class="text-3xl font-bold text-gray-900 mb-1">${char.name}</h3>
@@ -240,30 +229,24 @@
                             </div>
                         </div>
 
-                        <!-- 3:2 비율 이미지 영역 -->
-                        <!-- 이미지가 로드 실패 시(onerror), img 태그를 숨겨서 뒤에 있는 안내 박스가 보이도록 처리 -->
                         <div class="w-full aspect-[3/2] rounded-sm mb-6 relative overflow-hidden bg-[#FAF8F0] border border-dashed border-yellow-200 flex items-center justify-center group-hover:border-[#D4AF37]/50 transition-colors">
                             <div class="flex flex-col items-center justify-center text-[#D4AF37]/60 z-0 text-center px-4">
                                 <i data-lucide="image" class="w-8 h-8 mb-2"></i>
                                 <span class="text-xs font-sans tracking-wide">이미지 파일명:</span>
                                 <span class="text-sm font-bold font-sans mt-1 bg-white px-2 py-1 rounded shadow-sm">${char.imageFile}</span>
                             </div>
-                            <!-- 실제 이미지 (존재할 경우 위를 덮음) -->
-                            <img src="${char.imageFile}" alt="${char.name}" class="absolute inset-0 w-full h-full object-cover z-10" onerror="this.style.display='none'">
+                            <img src="${char.imageFile}" alt="${char.name}" class="absolute inset-0 w-full h-full object-cover z-10">
                         </div>
 
-                        <!-- 뱃지 태그 -->
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-yellow-50/50 text-[#8B6508] border border-yellow-100/50 text-sm rounded-full">${char.role}</span>
                             <span class="px-3 py-1 bg-gray-50 text-gray-600 border border-gray-100 text-sm rounded-full">${char.age}</span>
                         </div>
 
-                        <!-- 외모 묘사 -->
                         <div class="mb-6 pb-6 border-b border-gray-100 border-dashed">
                             <p class="text-gray-600 leading-relaxed text-sm">${char.appearance}</p>
                         </div>
 
-                        <!-- 스탯 바 -->
                         <div class="mb-6 space-y-3 flex-1">
                             <div class="flex justify-between items-end mb-2">
                                 <span class="text-sm font-bold text-gray-800">성격 지표</span>
@@ -272,13 +255,11 @@
                             ${statsHtml}
                         </div>
 
-                        <!-- 상세정보 토글 버튼 -->
                         <button onclick="toggleDetails('${char.id}')" class="w-full py-3 mt-auto text-sm text-center text-[#8B6508] border border-[#D4AF37]/30 hover:bg-[#FFFDF5] transition-colors flex items-center justify-center gap-2">
                             <span id="btn-text-${char.id}">내밀한 이야기 펼치기</span>
                             <i data-lucide="chevron-down" id="btn-icon-${char.id}" class="w-4 h-4 transition-transform duration-300"></i>
                         </button>
 
-                        <!-- 토글로 열리는 상세 내용 -->
                         <div id="details-${char.id}" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out">
                             <div class="space-y-5 text-sm text-gray-600 bg-gray-50/50 p-5 rounded-sm border border-gray-100 mt-6">
                                 <div>
